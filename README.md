@@ -1,4 +1,4 @@
-# NN
+# NeuralNetwork
 Простанство имен NeuralNetwork представляет собой библиотеку для работы с искусственными нейронными сетями.
 
 ### Инициализация нейронной сети
@@ -54,3 +54,47 @@ static public FeedForwardNet ReadNet(string filepath)
          **************************************************/
 ```
 ## Пример
+Для примера обучим сеть на выборке ирисов Фишшера.<br>
+Создадим сеть с тремя слоями 10, 5 и 3 нейронов соответсвенно.<br>
+На вход будут подаваться вектор из 4 чисел классифицирующих ирис.<br>
+На выходе будет 3 нейрона, каждый будет отвечать за свой сорт ирисов.<br>
+Соответсвенно за результат будем брать того нейрона что вернул наибольший результат.<br>
+```csharp
+const bool newNet = true;
+FeedForwardNet net;
+
+if (newNet)
+{
+	const double LearningRate = 0.1;
+	const int epochs = 10000;
+	const int batchSize = 1;
+	net = new FeedForwardNet();
+	net.AddSigmoidLayer(10, 4);
+	net.AddSigmoidLayer(5, 10);
+	net.AddSigmoidLayer(3, 5);
+	net.Train(inputs, outputs, LearningRate, epochs, batchSize);
+}
+else
+{
+	net = ANNSerializer.ReadNet(@"first_net/1.ann");
+}
+```
+Считаем выборку перемешаем её случайным образом и разделим на обучающую и тестовую.
+```csharp
+List<List<double>> inputs = ReadNetIO(@"input4.txt");
+List<List<double>> outputs = ReadNetIO(@"output3.txt");
+
+Shuffle(inputs);
+Shuffle(outputs);
+
+List<List<double>> testin = new List<List<double>>();
+List<List<double>> testout = new List<List<double>>();
+
+for(int i = 1; i < 11; ++i)
+{
+	testin.Add(inputs[inputs.Count - i]);
+	testout.Add(outputs[outputs.Count - i]);
+	inputs.RemoveAt(inputs.Count - i);
+	outputs.RemoveAt(outputs.Count - i);
+}
+```
