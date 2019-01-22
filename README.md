@@ -101,3 +101,20 @@ for(int i = 1; i < 11; ++i)
 После 12 секунд обучения сеть дает 100% правильных ответов при SSE=2.264678445.<br>
 В том числе и на тестовой выборке(Желтым обозначен результат работы сети и зеленым правильный ответ):
 ![](images/Screenshot_3.jpg)
+```csharp
+Console.WriteLine("Tests:");
+for (int i = 0; i < testin.Count; ++i)
+{
+	List<double> result = net.Calculate(testin[i]);
+	Console.ForegroundColor = ConsoleColor.White;
+	for (int j = 0; j < testin[i].Count; ++j)
+	{
+		Console.Write(testin[i][j] + " ");
+	}
+	Console.WriteLine();
+	Console.ForegroundColor = ConsoleColor.Yellow;
+	Console.Write(i + " " + ConvertToIris(result) + " ");
+	Console.ForegroundColor = ConsoleColor.Green;
+	Console.WriteLine(ConvertToIris(testout[i]) + "\n");
+}
+```
