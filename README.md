@@ -29,18 +29,18 @@ batchSize -- int размер пакета (По умолчанию 1).<br>
 ![](images/Screenshot_2.jpg)
 
 После обучения сеть сохраняется в виде бинарного файла с расширением .ann.
-Класс ANNSerializer позволяет считывать и записывать веса нейронной сети для дальнейшего использования.
+Класс ANNSerializer позволяет считывать и записывать веса нейронной сети для дальнейшего использования.<br>
 Функция
 ```csharp
 static public void WriteNet(LSTMCell net, string netname, string filename)
 ```
-Создает папку с названием netname и записывает сеть net в файл filename
+Создает папку с названием netname и записывает сеть net в файл filename.<br>
 Функция
 ```csharp
 static public FeedForwardNet ReadNet(string filepath)
 ```
 Принимает путь к файлу .ann и возвращает считанную сеть.
-##### Структура .ann файла
+#### Структура .ann файла
 ```csharp
         /**************************************************
          * Construction of .ann file
