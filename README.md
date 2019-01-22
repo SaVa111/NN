@@ -14,8 +14,8 @@ net.AddTangentialLayer(3, 5);
 ```csharp
 net.Train(inputs, outputs, LearningRate, epochs, batchSize);
 ```
-inputs -- List<List<double> > Список входов обучающей выборки.
-outputs -- List<List<double> > Список выходов обучающей выборки.
-LearningRate -- double Коэфициент скорости обучения сети (По умолчанию 0.01).
-epochs -- int Колличество эпох.
-batchSize -- int размер пакета (По умолчанию 1).
+inputs -- List<List<double> > Список входов обучающей выборки. <br>
+outputs -- List<List<double> > Список выходов обучающей выборки.<br>
+LearningRate -- double Коэфициент скорости обучения сети (По умолчанию 0.01).<br>
+epochs -- int Колличество эпох.<br>
+batchSize -- int размер пакета (По умолчанию 1).<br>
